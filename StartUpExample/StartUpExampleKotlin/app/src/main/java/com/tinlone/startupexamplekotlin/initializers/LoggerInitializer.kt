@@ -16,4 +16,5 @@ class LoggerInitializer : Initializer<Logger?> {
         // 预示没有其他依赖需要初始化
         return emptyList()
     }
+
 }

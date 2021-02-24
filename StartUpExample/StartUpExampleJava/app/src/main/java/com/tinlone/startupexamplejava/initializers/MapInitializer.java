@@ -8,7 +8,7 @@ import androidx.startup.Initializer;
 
 import com.tinlone.startupexamplejava.dependencies.TXMap;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 public class MapInitializer implements Initializer<TXMap> {
@@ -23,6 +23,6 @@ public class MapInitializer implements Initializer<TXMap> {
     @Override
     public List<Class<? extends Initializer<?>>> dependencies() {
         // map依赖了log
-        return Collections.singletonList(LoggerInitializer.class);
+        return Arrays.asList(LoggerInitializer.class, SomethingInitializer.class);
     }
 }

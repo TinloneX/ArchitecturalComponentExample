@@ -4,11 +4,12 @@ import android.content.Context
 import android.util.Log
 import androidx.startup.Initializer
 import com.tinlone.startupexamplekotlin.dependencies.Cache
+import com.tinlone.startupexamplekotlin.dependencies.Logger
 import com.tinlone.startupexamplekotlin.dependencies.database.DatabaseProxy
 
 class CacheInitializer : Initializer<Cache> {
     override fun create(context: Context): Cache {
-        Log.i("loglog", "create: CacheInitializer")
+        Logger.log("loglog", "create: CacheInitializer")
         Cache.initialize(DatabaseProxy.getInstance())
         return Cache.getInstance()
     }
