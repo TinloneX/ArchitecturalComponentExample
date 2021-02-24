@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
 }
 
 android {
@@ -7,7 +8,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.tinlone.lifecycleexamplejava"
+        applicationId "com.tinlone.lifecycleexamplekotlin"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
@@ -26,17 +27,21 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
-
     def lifecycle_version = "2.3.0"
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // 单纯生命周期组件
@@ -44,5 +49,4 @@ dependencies {
 
     // 负责进程的生命周期
     implementation 'androidx.lifecycle:lifecycle-process:2.3.0'
-
 }
