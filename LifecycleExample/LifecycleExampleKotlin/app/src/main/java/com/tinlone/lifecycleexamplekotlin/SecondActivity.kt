@@ -2,6 +2,7 @@ package com.tinlone.lifecycleexamplekotlin
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
@@ -12,9 +13,9 @@ class SecondActivity : Activity(),LifecycleOwner {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-
+        Log.i("loglog", "======================== onCreate: SecondActivity")
         lifecycleRegistry = LifecycleRegistry(this)
-        lifecycleRegistry.addObserver(CameraLifecycleObserver())
+        lifecycleRegistry.addObserver(CameraLifecycleObserver(lifecycle))
         lifecycleRegistry.currentState = Lifecycle.State.CREATED
     }
 

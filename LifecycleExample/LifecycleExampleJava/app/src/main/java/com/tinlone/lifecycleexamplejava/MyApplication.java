@@ -6,10 +6,17 @@ import androidx.lifecycle.ProcessLifecycleOwner;
 
 public class MyApplication extends Application {
 
+    private ProcessLifecycleObserver observer;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
-        ProcessLifecycleOwner.get().getLifecycle().addObserver(new ProcessLifecycleObserver());
+        observer = new ProcessLifecycleObserver();
+        ProcessLifecycleOwner.get().getLifecycle().addObserver(observer);
+    }
+
+    public boolean isForeground() {
+        return observer.isForeground();
     }
 }

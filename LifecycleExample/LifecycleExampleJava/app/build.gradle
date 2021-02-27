@@ -43,6 +43,5 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
 
     // 负责进程的生命周期
-    implementation 'androidx.lifecycle:lifecycle-process:2.3.0'
-
+    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
 }

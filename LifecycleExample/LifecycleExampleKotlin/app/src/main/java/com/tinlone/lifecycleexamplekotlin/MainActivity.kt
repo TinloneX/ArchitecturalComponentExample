@@ -1,7 +1,10 @@
 package com.tinlone.lifecycleexamplekotlin
 
 import android.app.Activity
+import android.app.ActivityManager
+import android.app.ActivityManager.RunningAppProcessInfo
 import android.app.Application.ActivityLifecycleCallbacks
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -14,8 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        lifecycle.addObserver(CameraLifecycleObserver())
-
+        lifecycle.addObserver(CameraLifecycleObserver(lifecycle))
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
                 override fun onActivityCreated(activity: Activity, bundle: Bundle?) {
@@ -49,7 +51,27 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     fun gotoSecondActivity(view: View?) {
         startActivity(Intent(this, SecondActivity::class.java))
+    }
+
+
+    fun inAppOnForeground(context: Context): Boolean {
+        try {
+            val activityManager = context.getSystemService(ACTIVITY_SERVICE) as ActivityManager
+            val packageName = context.packageName
+            if (activityManager != null) {
+                val appProcesses = activityManager.runningAppProcesses ?: return false
+                for (appProcess in appProcesses) {
+                    if (packageName == appProcess.processName && appProcess.importance == RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
+                        return true
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return false
     }
 }

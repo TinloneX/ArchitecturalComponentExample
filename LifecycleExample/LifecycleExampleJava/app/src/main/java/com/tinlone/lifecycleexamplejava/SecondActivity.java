@@ -22,7 +22,7 @@ public class SecondActivity extends Activity implements LifecycleOwner {
         Log.i("loglog", "======================== onCreate: SecondActivity");
         lifecycleRegistry = new LifecycleRegistry(this);
         lifecycleRegistry.setCurrentState(Lifecycle.State.CREATED);
-        getLifecycle().addObserver(new CameraLifecycleObserver());
+        getLifecycle().addObserver(new CameraLifecycleObserver(getLifecycle()));
     }
 
     @Override
