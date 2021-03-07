@@ -14,6 +14,6 @@ class MyApplication() : Application() {
     }
 
     fun isForeground(): Boolean {
-        return observer!!.isForeground()
+        return if (observer == null) false else observer!!.isForeground()
     }
 }
