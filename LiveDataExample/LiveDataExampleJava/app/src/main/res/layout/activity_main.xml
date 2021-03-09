@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_observer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="订阅数据变化👉"
+        android:onClick="countUp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_transform"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="transformByMap"
+        android:text="转换数据(map)👉"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_extension" />
+
+    <Button
+        android:id="@+id/btn_transform_switch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="转换数据(switchMap)"
+        android:onClick="transformBySwitchMap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_transform" />
+
+    <Button
+        android:id="@+id/btn_mediator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:onClick="mediatorData"
+        android:text="合并数据👉"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_switch_seller" />
+
+    <Button
+        android:id="@+id/btn_switch_seller"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="转换数据Object版"
+        android:onClick="transformBySwitchMapForSeller"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_transform_switch" />
+
+    <Button
+        android:id="@+id/btn_extension"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="测试扩展LiveData👉"
+        android:onClick="extensionData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_observer" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
