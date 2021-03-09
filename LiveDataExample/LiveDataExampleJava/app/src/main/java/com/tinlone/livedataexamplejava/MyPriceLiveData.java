@@ -9,13 +9,11 @@ public class MyPriceLiveData extends LiveData<Integer> {
 
     @Override
     protected void onActive() {
-        super.onActive();
         PriceManager.getInstance().requestPriceUpdate(listener);
     }
 
     @Override
     protected void onInactive() {
-        super.onInactive();
         PriceManager.getInstance().removeUpdateListener(listener);
     }
 }

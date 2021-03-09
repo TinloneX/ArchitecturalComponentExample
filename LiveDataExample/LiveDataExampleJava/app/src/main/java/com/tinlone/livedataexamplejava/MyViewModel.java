@@ -11,10 +11,7 @@ public class MyViewModel extends ViewModel {
     MutableLiveData<Integer> price = new MutableLiveData<>();
 
     public void countUp() {
-        if (price.getValue() == null) {
-            price.setValue(0);
-        }
-        price.setValue(price.getValue() + 1);
+        price.setValue(price.getValue() == null ? 0 : price.getValue() + 1);
     }
 
     //==================为保证每个案例原汁原味===================
@@ -33,10 +30,7 @@ public class MyViewModel extends ViewModel {
             price -> price + (price % 2 == 0 ? "块刚刚好" : "块贵了"));
 
     public void setPriceForMap() {
-        if (priceForMap.getValue() == null) {
-            priceForMap.setValue(0);
-        }
-        priceForMap.setValue(priceForMap.getValue() + 1);
+        priceForMap.setValue(priceForMap.getValue() == null ? 0 : priceForMap.getValue() + 1);
     }
 
     //==================为保证每个案例原汁原味===================
@@ -51,10 +45,7 @@ public class MyViewModel extends ViewModel {
     }
 
     public void setPriceForSeller() {
-        if (priceForSwitch.getValue() == null) {
-            priceForSwitch.setValue(0);
-        }
-        priceForSwitch.setValue(priceForSwitch.getValue() + 1);
+        priceForSwitch.setValue(priceForSwitch.getValue() == null ? 0 : priceForSwitch.getValue() + 1);
     }
 
     LiveData<String> switchToUserLook = Transformations.switchMap(priceForSwitch, this::getSellerThink);
@@ -79,10 +70,7 @@ public class MyViewModel extends ViewModel {
     }
 
     public void setPriceToSeller() {
-        if (priceForSeller.getValue() == null) {
-            priceForSeller.setValue(0);
-        }
-        priceForSeller.setValue(priceForSeller.getValue() + 1);
+        priceForSeller.setValue(priceForSeller.getValue() == null ? 0 : priceForSeller.getValue() + 1);
     }
 
     LiveData<Seller> switchToSeller = Transformations.switchMap(priceForSeller, this::getSeller);
